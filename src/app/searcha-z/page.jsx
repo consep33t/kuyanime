@@ -37,7 +37,9 @@ const SearchAZPage = () => {
   };
 
   const handleNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    if (currentPage > length) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
   };
 
   return (
