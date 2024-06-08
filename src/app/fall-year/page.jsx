@@ -52,6 +52,7 @@ const page = () => {
           <div className="w-full flex flex-wrap gap-4 p-10 justify-between">
             {fallThisYear.map((data) => (
               <AnimeList
+                key={data.mal_id}
                 id={data.mal_id}
                 title={data.title}
                 images={data.images.webp.large_image_url}
