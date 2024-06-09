@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import LetterBtn from "../components/footer/letterBtn";
 import AnimeList from "../components/AnimeList"; // Pastikan Anda memiliki komponen AnimeList
+import { getAnimeResponse } from "../libs/api-libs";
 
 const SearchAZPage = () => {
   const searchParams = useSearchParams();
@@ -22,9 +23,8 @@ const SearchAZPage = () => {
   }, [searchParams, currentPage]);
 
   const fetchData = async (letter, page) => {
-    // Ganti URL dengan URL API yang sesuai
     const response = await fetch(
-      `https://api.jikan.moe/v4/anime?letter=${letter}&page=${page}`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?letter=${letter}&page=${page}`
     );
     const anime = await response.json();
     setSearchResult(anime.data);
